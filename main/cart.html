@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Cart — E&amp;M'z Minute Snacks</title>
+  <link rel="stylesheet" href="assets/css/bundle.css">
+  <link rel="icon" href="/assets/fav.ico">
+</head>
+<body>
+  <!-- header section strats -->
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <span>
+              E & M'z Minute Snacks
+            </span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  mx-auto ">
+              <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="snacks.html">Snacks</a>
+              </li>
+               <li class="nav-item">
+                <a class="nav-link" href="cart.html">Cart</a>
+              </li>
+               <li class="nav-item">
+                <a class="nav-link" href="login.html">Login</a>
+                 
+              </li>
+            </ul>
+           
+              
+         
+              <a href="order.html" class="order_online">
+                Order Online
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+
+
+  <main class="container">
+    <h2>Your Cart</h2>
+    <div id="cart-container" class="card loading-placeholder">Loading cart…</div>
+  </main>
+
+  <script type="module">
+    import { initializeFirebase } from './js/firebase-init.js';
+    import { initCartPage } from './js/cart.js';
+    initializeFirebase().then(()=>initCartPage({containerId:'cart-container'}));
+  </script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+/* Bundle of bootstrap + font-awesome + site styles + responsive */
+/* Bundle file: import components so only a single link is needed in HTML.
+	This keeps the assets readable and avoids extremely long inlined content.
+*/
+@import url('bootstrap.css');
+@import url('font-awesome.min.css');
+@import url('style.css');
+@import url('responsive.css');

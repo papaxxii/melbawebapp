@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Profile — E&amp;M'z Snacks</title>
+  <link rel="stylesheet" href="assets/css/bundle.css" />
+</head>
+<body>
+  <div class="container my-4">
+    <h1>Your Profile</h1>
+    <div>
+      <strong>Email:</strong> <span id="profile-email"></span>
+    </div>
+
+    <form id="profile-form" class="my-3">
+      <div class="form-group">
+        <label for="profile-name">Full name</label>
+        <input id="profile-name" class="form-control" name="name" placeholder="Your name" />
+      </div>
+      <div class="form-group">
+        <label for="profile-phone">Phone</label>
+        <input id="profile-phone" class="form-control" name="phone" placeholder="09xxxxxxxxx" />
+      </div>
+      <div class="form-group">
+        <label for="profile-address">Address</label>
+        <textarea id="profile-address" class="form-control" name="address" placeholder="Home address"></textarea>
+      </div>
+      <button class="btn btn-primary" type="submit">Save</button>
+      <button id="logout-btn" type="button" class="btn btn-secondary">Sign out</button>
+    </form>
+
+    <h2>Your Orders</h2>
+    <div id="orders-list">Loading orders...</div>
+  </div>
+
+  <script type="module">
+    import { initAuth } from './main/js/auth.js';
+    import { initProfile } from './main/js/profile.js';
+    initAuth();
+    initProfile();
+  </script>
+
+</body>
+</html>

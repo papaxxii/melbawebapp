@@ -3,42 +3,34 @@
     "development"
   ],
   "hints": {
-    "compat-api/css": [
-      "default",
-      {
-        "ignore": [
-          "-webkit-text-size-adjust"
-        ]
-      }
-    ],
     "axe/name-role-value": [
       "default",
       {
-        "button-name": "off",
-        "link-name": "off"
+        "button-name": "on",
+        "link-name": "on"
       }
     ],
     "axe/forms": [
       "default",
       {
-        "label": "off",
-        "select-name": "off"
+        "label": "on",
+        "select-name": "on"
       }
     ],
-    "disown-opener": "off",
     "axe/language": [
       "default",
       {
-        "html-has-lang": "off"
+        "html-has-lang": "on"
       }
     ],
-    "axe/parsing": [
+    "disown-opener": "on",
+    "compat-api/css": [
       "default",
       {
-        "duplicate-id": "off"
+        "ignore": [
+          "min-height: auto"
+        ]
       }
-    ],
-    "no-inline-styles": "off",
-    "button-type": "off"
+    ]
   }
 }

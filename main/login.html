@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sign In — E&amp;M'z Snacks</title>
+  <link rel="stylesheet" href="assets/css/bundle.css" />
+  <link rel="icon" href="assets/fav.ico" />
+  
+</head>
+<body>
+  <div class="container my-5">
+    <h1>Sign In</h1>
+    <form id="login-form">
+      <div class="form-group"><label for="login-email">Email</label><input id="login-email" class="form-control" type="email" required></div>
+      <div class="form-group"><label for="login-pass">Password</label><input id="login-pass" class="form-control" type="password" required></div>
+      <button class="btn btn-primary" type="submit">Sign In</button>
+      <a class="btn btn-link" href="signup.html">Sign up</a>
+    </form>
+
+    <div id="login-feedback" class="mt-2"></div>
+  </div>
+
+  <script type="module">
+    import { loginWithEmail, initAuth } from './main/js/auth.js';
+    initAuth();
+    import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
+    import { initializeFirebase } from './js/firebase-init.js';
+    // if already logged in, go to index
+    (async function(){
+      const cfg = await initializeFirebase();
+      const auth = cfg.auth;
+      onAuthStateChanged(auth, (user) => {
+        if (user) window.location = 'index.html';
+      });
+    })();
+    document.getElementById('login-form').addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      const email = document.getElementById('login-email').value;
+      const pass = document.getElementById('login-pass').value;
+        try {
+          await loginWithEmail(email, pass);
+          window.location = 'index.html';
+      } catch (e) {
+        document.getElementById('login-feedback').textContent = e.message;
+      }
+    });
+  </script>
+</body>
+</html>

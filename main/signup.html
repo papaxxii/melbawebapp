@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sign Up — E&amp;M'z Snacks</title>
+  <link rel="stylesheet" href="assets/css/bundle.css" />
+</head>
+<body>
+  <div class="container my-5">
+    <h1>Sign up</h1>
+    <form id="signup-form">
+      <div class="form-group"><label for="signup-name">Full name</label><input id="signup-name" class="form-control" required></div>
+      <div class="form-group"><label for="signup-email">Email</label><input id="signup-email" class="form-control" type="email" required></div>
+      <div class="form-group"><label for="signup-pass">Password</label><input id="signup-pass" class="form-control" type="password" required></div>
+      <button class="btn btn-primary" type="submit">Create account</button>
+      <a class="btn btn-link" href="login.html">Sign in</a>
+    </form>
+    <div id="signup-feedback" class="mt-2"></div>
+  </div>
+
+  <script type="module">
+    import { registerWithEmail } from './main/js/auth.js';
+    import { initAuth } from './main/js/auth.js';
+    initAuth();
+    document.getElementById('signup-form').addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      const name = document.getElementById('signup-name').value;
+      const email = document.getElementById('signup-email').value;
+      const pass = document.getElementById('signup-pass').value;
+      try {
+        await registerWithEmail(email, pass, name);
+          window.location = 'index.html';
+      } catch (e) {
+        document.getElementById('signup-feedback').textContent = e.message;
+      }
+    });
+  </script>
+</body>
+</html>

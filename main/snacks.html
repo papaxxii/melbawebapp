@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Shop — E&amp;M'z Minute Snacks</title>
+  <link rel="icon" href="/assets/fav.ico">
+  <link rel="stylesheet" href="assets/css/bundle.css">
+</head>
+<body class="shop-page">
+  <header class="header_section">
+    <div class="container">
+      <nav class="main-nav navbar-header">
+        <a class="brand" href="index.html">
+        <button id="header" class="navbar-toggler" aria-expanded="false" aria-label="Toggle navigation">☰</button>
+        <div class="nav-actions">
+          <a href="index.html" class="btn ghost">Home</a>
+          <a href="admin.html" class="btn ghost">Admin</a>
+          <button id="cart-btn" class="btn ghost">
+            Cart (<span id="cart-count">0</span>)
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container shop-layout">
+    <aside class="sidebar">
+      <h3>Categories</h3>
+      <ul id="category-list">
+        <li data-cat="all" class="active">All</li>
+      </ul>
+      <h3>Tags</h3>
+      <div><span class="tag">Chocolate</span><span class="tag">Vegan</span><span class="tag">Bestseller</span></div>
+    </aside>
+
+    <section class="main-content">
+      <div class="tools">
+        <input id="search" type="search" placeholder="Search cookies..." />
+        <select id="sort"><option value="default">Default</option><option value="price-asc">Price low→high</option><option value="price-desc">Price high→low</option></select>
+      </div>
+
+      <div id="product-grid" class="product-grid"><div class="loading-placeholder">Loading products…</div></div>
+    </section>
+  </main>
+
+  <script type="module">
+    import { initializeFirebase } from 'main/js/firebase-init.js';
+    import { initShop } from 'main/js/shop.js';
+    initializeFirebase().then(()=>initShop({
+      productGridId:'product-grid',
+      searchId:'search',
+      categoryListId:'category-list',
+      cartCountId:'cart-count'
+    }));
+    document.getElementById('cart-btn').addEventListener('click',()=>location.href='cart.html');
+  </script>
+  <script type="module">
+    import { initSidebar } from './js/sidebar.js';
+    initSidebar();
+  </script>
+</body>
+</html>

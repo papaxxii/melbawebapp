@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>E&M'z Minute Snacks — Account</title>
+  <link rel="stylesheet" href="assets/css/bundle.css" />
+  <meta name="description" content="E&M'z Minute Snacks — Quick snacks & drinks. Order online for pickup and delivery.">
+<meta name="keywords" content="snacks, juice, coffee, fast food, online shop">
+<link rel="canonical" href="https://emzsnacks-88225.web.app/shop.html" />
+<meta property="og:title" content="E&M'z Minute Snacks">
+<meta property="og:description" content="Order snacks and drinks online — fast and fresh.">
+<meta property="og:image" content="https://yourdomain.com/assets/images/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/fav.ico" />
+</head>
+<body>
+  <a class="skip-link" href="index.html">Skip to main content</a>
+  <div class="pushWrapper">
+    <header class="pageHeader">
+      <button class="menu-trigger" aria-label="Open menu" title="Open menu">
+        <span class="lines"></span>
+      </button>
+      <a class="headerLogo smoothScroll" href="index.html">
+        <img class="logo-img" src="assets/images/logo.png" alt="E&M'z Logo">
+      </a>
+    </header>
+
+    <div class="sidebar">
+      <div class="sidebar-brand">
+        <a class="sidebarLogo smoothScroll" href="index.html" title="E&amp;M'z Minute Snacks">
+          <img class="logo-img" src="assets/images/logo.png" alt="E&amp;M'z Logo">
+          <span class="text">E&amp;M'z Minute Snacks</span>
+        </a>
+      </div>
+      <nav class="mainMenu" role="navigation" aria-label="Main menu">
+        <ul class="menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="featured.html">Top Featured</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="auth.html" aria-current="true">Login / Sign Up</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <main>
+      <section id="auth" class="emz-auth" role="region" aria-labelledby="emz-auth-title">
+        <div class="section-seperator">
+          <div class="container-template">
+            <h2 id="emz-auth-title"><span class="seconday">Account</span> Login / Sign Up</h2>
+          </div>
+        </div>
+        <div class="content">
+          <div class="container-template">
+            <div class="auth-note">Login / Sign Up requires Firebase keys in <code>main/js/firebase-config.js</code>. A local demo will run if keys are missing.</div>
+            <div class="auth-grid">
+              <form data-emz-login>
+                <label for="login-email">Email</label>
+                <input id="login-email" name="email" type="email" required class="form-control" />
+                <label for="login-password">Password</label>
+                <input id="login-password" name="password" type="password" required class="form-control" />
+                <div class="spacer small"></div>
+                <button class="btn btn-primary" type="submit">Login</button>
+                <button type="button" data-emz-logout class="btn btn-link">Logout</button>
+              </form>
+
+              <form data-emz-signup>
+                <label for="signup-name">Name</label>
+                <input id="signup-name" name="name" type="text" required class="form-control" />
+                <label for="signup-email">Email</label>
+                <input id="signup-email" name="email" type="email" required class="form-control" />
+                <label for="signup-password">Password</label>
+                <input id="signup-password" name="password" type="password" required class="form-control" />
+                <div class="spacer small"></div>
+                <button class="btn btn-success" type="submit">Create account</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+  <script src="main/js/wow.min.js"></script>
+  <script src="main/js/firebase-config.js"></script>
+  <script src="main/js/firebase.js"></script>
+  <script src="main/js/app.js"></script>
+
+  <script>
+(function(){
+    function applyDesktopLayout(){
+        var sidebar=document.querySelector('.sidebar');
+        var header=document.querySelector('.pageHeader');
+        var mainEl=document.querySelector('main');
+        if(!sidebar || !mainEl) return;
+        if(window.innerWidth>=900){
+            sidebar.classList.remove('open');
+            sidebar.style.transform='none';
+            sidebar.style.display='block';
+            if(header) header.style.display='none';
+            var wrapper=document.querySelector('.pushWrapper');
+            if(wrapper) wrapper.style.display='grid';
+        } else {
+            if(header) header.style.display='flex';
+        }
+    }
+    document.addEventListener('DOMContentLoaded',function(){
+        applyDesktopLayout();
+        window.addEventListener('resize',applyDesktopLayout);
+        var menuBtn=document.querySelector('.menu-trigger');
+        var sidebar=document.querySelector('.sidebar');
+        var overlay=document.createElement('div');
+        overlay.className='menu-overlay';
+        document.body.appendChild(overlay);
+        if(menuBtn && sidebar){
+            menuBtn.addEventListener('click',function(e){
+                e.preventDefault();
+                sidebar.classList.toggle('open');
+                overlay.classList.toggle('visible');
+            });
+            overlay.addEventListener('click',function(){
+                sidebar.classList.remove('open');
+                overlay.classList.remove('visible');
+            });
+        }
+    });
+})();
+</script>
+
+</body>
+
+</html>

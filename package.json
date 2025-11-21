@@ -1,0 +1,10 @@
+{
+  "name": "melbawebapp",
+  "version": "0.0.1",
+  "scripts": {
+    "minify-css": "powershell -ExecutionPolicy Bypass -File tools/minify-css.ps1 public/assets/css/style.css public/assets/css/style.min.css"
+  },
+  "devDependencies": {
+    "clean-css-cli": "^5.6.0"
+  }
+}

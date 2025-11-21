@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E&M’z Minute Snacks | Order Page</title>
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="assets/css/bundle.css">
+  <!-- nice select css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.css">
+  <!-- custom css -->
+  <link rel="stylesheet" href="assets/css/bundle.css">
+</head>
+<body>
+
+  <!-- order section -->
+  <section class="order_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>Place Your Order</h2>
+        <p>Snacks in a snap, smiles in a minute!</p>
+      </div>
+      <div class="row">
+        <!-- Order Form -->
+        <div class="col-md-6">
+          <div class="form_container">
+            <form action="/submit-order" method="POST">
+              <div>
+                <input type="text" name="name" class="form-control" placeholder="Your Name" required />
+              </div>
+              <div>
+                <input type="text" name="phone" class="form-control" placeholder="Phone Number" required />
+              </div>
+              <div>
+                <input type="email" name="email" class="form-control" placeholder="Your Email" required />
+              </div>
+              <div>
+                <select name="item" class="form-control nice-select wide" required>
+                  <option value="" disabled selected>Select Item</option>
+                  <option value="biko">Biko</option>
+                  <option value="halo-halo">Halo-Halo</option>
+                  <option value="chicharon">Chicharon</option>
+                  <option value="bukayo">Bukayo</option>
+                  <option value="calamansi-juice">Calamansi Juice</option>
+                  <option value="fishball">Fishball</option>
+                  <option value="otap">Otap</option>
+                  <option value="leche-flan">Leche Flan</option>
+                  <option value="more-items">More Items</option>
+                </select>
+              </div>
+              <div>
+                <input type="number" name="quantity" class="form-control" placeholder="Quantity" min="1" required />
+              </div>
+              <div>
+                <input type="date" name="date" class="form-control" required />
+              </div>
+              <div class="btn_box">
+                <button type="submit">Order Now</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- Map -->
+        <div class="col-md-6">
+          <div class="map_container">
+            <div id="googleMap"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end order section -->
+
+  <!-- footer section -->
+  <footer class="footer_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 footer-col">
+          <h4>Contact Us</h4>
+          <p><i class="fa fa-map-marker"></i>  Biliran, Philippines</p>
+          <p><i class="fa fa-phone"></i> +63 9123456789</p>
+          <p><i class="fa fa-envelope"></i> melbahinunangan10@gmail.com</p>
+        </div>
+        <div class="col-md-4 footer-col">
+          <h4>Follow Us</h4>
+          <div class="footer_social">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="col-md-4 footer-col">
+          <h4>Opening Hours</h4>
+          <p>Weekdays: 10:00 AM - 10:00 PM</p>
+          <p>Closed on Weekends</p>
+        </div>
+      </div>
+      <div class="footer-info">
+        <p>&copy; <span id="displayYear"></span> E&M’z Minute Snacks. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <!-- end footer section -->
+
+  <!-- jQery -->
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <!-- bootstrap js -->
+  <script src="main/js/bootstrap.js"></script>
+  <!-- nice select -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+  <!-- custom js -->
+  <script src="main/js/custom.js"></script>
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+</body>
+</html>
